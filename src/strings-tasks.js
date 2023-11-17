@@ -149,7 +149,11 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  return str.indexOf(value);
+  if (!str.includes(value)) return str;
+  return (
+    str.slice(0, str.indexOf(value)) + // slice(0, 3)
+    str.slice(str.indexOf(value) + value.length) // slice ( 3 + 2 , to end)
+  );
 }
 
 /**
@@ -165,7 +169,11 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeLastOccurrences(str, value) {
-  return str.lastIndexOf(value);
+  if (!str.includes(value)) return str;
+  return (
+    str.slice(0, str.lastIndexOf(value)) + // slice(0, 16)
+    str.slice(str.lastIndexOf(value) + value.length) // slice ( 16 + 2 , to end)
+  );
 }
 
 /**
@@ -372,8 +380,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -386,8 +394,8 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.slice(7, value.length - 1);
 }
 
 /**
