@@ -301,9 +301,11 @@ function containsSubstring(str, substring) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  return str.replace(/[^aeiouAEIOUY]/gi, '').length;  //.replace() , заменит пустой строкой все что не является гласной и вернет новую длину строки
 }
+
+
 
 /**
  * Returns true if the string is a palindrome; otherwise false.
