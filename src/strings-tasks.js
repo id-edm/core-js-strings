@@ -354,9 +354,9 @@ function findLongestWord(sentence) {
  */
 function reverseWords(str) {
   return str
-    .split(' ')
-    .map((word) => word.split('').reverse().join(''))
-    .join(' ');
+    .split(' ')                                          //разбиваем строку на массив слов
+    .map((word) => word.split('').reverse().join(''))    //используем map для инвертирования букв в слове
+    .join(' ');                                          //собираем слова в предложение
 }
 
 /**
@@ -370,8 +370,13 @@ function reverseWords(str) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  return str
+    .split('')                                                                //разбиваем строку на массив символов
+    .map((char) =>                                                            //используем map для преобразования каждого символа
+      char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()   //если символ в верхнем регистре, преобразуем его в нижний, и наоборот
+    )
+    .join('');                                                                // объединяем символы обратно в строку
 }
 
 /**
